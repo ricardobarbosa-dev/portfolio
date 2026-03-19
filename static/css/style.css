@@ -1,0 +1,47 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Grotesk:wght@300..700&display=swap');
+@import "tailwindcss";
+
+:root {
+    --background: #05070a;
+    --accent-color: #1a56ff;
+    --text-color: #f1f5f9;
+    --text-three: #94a3b8;
+    --text-label: #64748B;
+    --text-placeholder: #334155;
+    --bg-header: #0A0A0F;
+    --header-border: #135bec1c;
+    --nav-height: 4.5rem;
+    --max-width: 1280px;
+    --hero-gradient: radial-gradient(circle at 50% 40%, #135bec25 0%, #05070a 65%);
+    --cards: #135bec0d;
+    --cards-border: #135bec1a;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #1a56ff #135bec25;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+#home,
+#about,
+#projects,
+#contact {
+    scroll-margin-top: 110px;
+}

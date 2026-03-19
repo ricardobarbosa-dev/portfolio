@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#05070a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="static/images/logo.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+    <title>Portfolio | Ricardo Barbosa</title>
+    <style type="text/css">
+        @theme {
+            --font-space: "Space Grotesk", sans-serif;
+        }
+
+        .timeline-item.active .dot {
+            background-color: #1a56ff;
+            box-shadow: 0 0 20px 5px rgba(37, 99, 235, 0.4);
+            transform: scale(1.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #1a56ff #135bec25;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+            border: 3px solid #f1f1f1;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: #1a56ff;
+            transition: all 0.3s ease;
+        }
+
+        #home,
+        #about,
+        #timeline,
+        #projects,
+        #contact {
+            scroll-margin-top: 6rem;
+        }
+
+        .lang-btn:not(.active) img {
+            opacity: 0.4;
+        }
+
+        .lang-btn.active img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="bg-[#05070a] text-white font-space selection:bg-blue-500/30">
+    <!-- nav -->
+    <nav
+        class="fixed top-0 w-full h-[5.5rem] bg-[#0a0a0fb8] backdrop-blur-md border-b border-[#135bec1c] flex items-center z-[1000]">
+        <div class="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div
+                    class="bg-[#1a56ff] p-0.5 rounded-lg flex items-center justify-center w-10 h-10 shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.3)]">
+                    <img src="static/images/logo.png" alt="B" class="w-full h-full object-contain">
+                </div>
+                <span class="font-bold text-[#f1f5f9] uppercase whitespace-nowrap md:text-lg text-sm tracking-tighter">
+                    Ricardo Barbosa
+                </span>
+            </div>
+
+            <div class="flex items-center gap-8">
+                <ul class="hidden md:flex items-center gap-14 text-sm font-medium uppercase tracking-wider">
+                    <li>
+                        <a href="#home"
+                            class="nav-link active flex items-center gap-2.5 text-[#94a3b8] hover:text-[#1a56ff] transition text-xs font-bold">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" height="22px"
+                                viewBox="0 -960 960 960" width="22px" fill="currentColor">
+                                <path
+                                    d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                            </svg>
+                            <span data-i18n="nav_home">INÍCIO</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about"
+                            class="nav-link flex items-center gap-2.5 text-[#94a3b8] hover:text-[#1a56ff] transition text-xs font-bold">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                                <path
+                                    d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z" />
+                            </svg>
+                            <span data-i18n="nav_about">SOBRE</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects"
+                            class="nav-link flex items-center gap-2.5 text-[#94a3b8] hover:text-[#1a56ff] transition text-xs font-bold">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" height="22px"
+                                viewBox="0 -960 960 960" width="22px" fill="currentColor">
+                                <path
+                                    d="M160-240v-480 520-40Zm0 80q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v200h-80v-200H447l-80-80H160v480h200v80H160ZM584-56 440-200l144-144 56 57-87 87 87 87-56 57Zm192 0-56-57 87-87-87-87 56-57 144 144L776-56Z" />
+                            </svg>
+                            <span data-i18n="nav_project">PROJETOS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#knowledge"
+                            class="nav-link flex items-center gap-2.5 text-[#94a3b8] hover:text-[#1a56ff] transition text-xs font-bold">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" height="22px"
+                                viewBox="0 -960 960 960" width="22px" fill="currentColor">
+                                <path
+                                    d="M560-520h280v-200H560v200Zm140-50-100-70v-40l100 70 100-70v40l-100 70ZM80-120q-33 0-56.5-23.5T0-200v-560q0-33 23.5-56.5T80-840h800q33 0 56.5 23.5T960-760v560q0 33-23.5 56.5T880-120H80Zm556-80h244v-560H80v560h4q42-75 116-117.5T360-360q86 0 160 42.5T636-200ZM445-435q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM182-200h356q-34-38-80.5-59T360-280q-51 0-97 21t-81 59Zm149.5-291.5Q320-503 320-520t11.5-28.5Q343-560 360-560t28.5 11.5Q400-537 400-520t-11.5 28.5Q377-480 360-480t-28.5-11.5ZM480-480Z" />
+                            </svg>
+                            <span data-i18n="nav_contact">CONTATO</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="flex items-center gap-2 border-l border-gray-800 md:pl-6 pl-4">
+                    <button class="lang-btn" data-lang="pt">
+                        <img src="https://flagcdn.com/w40/br.png" alt="PT"
+                            class="w-6 h-4 rounded-sm cursor-pointer hover:scale-110 transition flag-img">
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" alt="EN"
+                            class="w-6 h-4 rounded-sm cursor-pointer hover:scale-110 transition flag-img opacity-40">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <section id="home" class="relative min-h-[90vh] md:min-h-screen flex items-center overflow-hidden">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,#135bec25_0%,#05070a_65%)] pointer-events-none z-0">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 pt-12">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 mb-10 shadow-[0_0_15px_rgba(37,99,235,0.1)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1a56ff] shadow-[0_0_10px_#2563eb]"></span>
+                <span data-i18n="hero_dot"
+                    class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">Disponível para novos
+                    projetos</span>
+            </div>
+
+            <h1
+                class="font-space text-[45px] md:text-[40px] lg:text-[80px] font-bold leading-[1.05] tracking-tighter mb-14">
+                <span class="text-[#1a56ff] mr-1 text-[50px] justify-center">&gt;</span><span data-i18n="hero_h1">
+                    Construindo experiências </span>
+                <br />
+                <span class="text-[#94a3b8]" data-i18n="exp">digitais..</span>
+            </h1>
+
+            <div class="flex items-center gap-6 mb-16">
+                <div class="relative shrink-0">
+                    <div
+                        class="w-32 h-32 md:w-42 md:h-42 rounded-full border-2 border-[#1a56ff] flex items-center justify-center bg-[#1a56ff0d] shadow-[0_0_60px_rgba(37,99,235,0.15),inset_0_0_20px_rgba(37,99,235,0.1)]">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-[#1a56ff]" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-[#94a3b8] text-[1.1rem] md:text-2xl max-w-[300px] md:max-w-sm leading-relaxed text-left"
+                    data-i18n="hero_p">
+                    Projetando back-ends robustos em Python e interfaces web modernas com estética minimalista.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#projects">
+                    <button
+                        class="flex-1 md:flex-none bg-[#1a56ff] text-white md:w-[300px] w-full px-20 py-4 rounded-md font-bold opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2"
+                        data-i18n="hero_btn">
+                        Ver projetos
+                    </button>
+                </a>
+                <button title="Baixar curriculum"
+                    class="p-4 rounded-2xl border border-[#1a56ff]  hover:bg-[#1a56ff]/10 opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1a56ff">
+                        <path
+                            d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- nav mobile -->
+    <div
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-[#05070a]/95 backdrop-blur-lg border-t border-[#135bec1c] z-50 px-8 py-4">
+        <ul class="flex items-center justify-between">
+            <li>
+                <a href="#home"
+                    class="nav-link active text-[#94a3b8] hover:text-[#1a56ff] flex flex-col items-center transition gap-1.5">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                    <span data-i18n="nav_home"
+                        class="text-[8px] font-bold uppercase tracking-widest nav_home">Início</span>
+                </a>
+            </li>
+            <li>
+                <a href="#about" class="nav-link text-gray-400 hover:text-[#1a56ff] flex flex-col items-center gap-1.5">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                    <span data-i18n="nav_about" class="text-[8px] font-bold uppercase tracking-widest">Sobre</span>
+                </a>
+            </li>
+            <li>
+                <a href="#projects"
+                    class="nav-link text-gray-400 hover:text-[#1a56ff] flex flex-col items-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-5 h-5"
+                        fill="currentColor">
+                        <path
+                            d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v200H600q-100 0-170 70t-70 170v40H160ZM584-56 440-200l144-144 56 57-87 87 87 87-56 57Zm192 0-56-57 87-87-87-87 56-57 144 144L776-56Z" />
+                    </svg>
+                    <span data-i18n="nav_project" class="text-[8px] font-bold uppercase tracking-widest">Projetos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#knowledge"
+                    class="nav-link text-gray-400 hover:text-[#1a56ff] flex flex-col items-center gap-1">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span data-i18n="nav_contact" class="text-[8px] font-bold uppercase tracking-widest">Contato</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- about -->
+    <section id="about" class="max-w-7xl mx-auto px-6 w-full relative z-10 mb-24">
+        <div class="mb-10">
+            <span class="text-[#1a56ff] font-bold text-[2rem] md:text-[2.5rem]">00.</span>
+            <span class="text-white font-bold text-[2rem] md:text-[2.5rem] ml-2" data-i18n="about_h2">Sobre mim</span>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-start gap-10">
+            <div class="shrink-0">
+                <img src="static/images/profile.jpg" alt="Perfil profile"
+                    class="mt-4 rounded-2xl object-cover w-full max-w-[400px] border border-white/5 shadow-lg">
+            </div>
+
+            <div class="flex flex-col mt-6 md:mt-10 about-txt">
+                <span class="text-[#1a56ff] font-semibold text-[1.2rem]" data-i18n="about_me">Quem sou eu</span>
+                <span class="text-[#94a3b8] font-semibold text-[1.6rem]" data-i18n="about_esp">Ricardo Barbosa</span>
+                <span class="text-[#1a56ff] font-semibold text-[0.8rem] uppercase tracking-widest">
+                    Fullstack developer
+                </span>
+                <p class="mt-4 text-[#94a3b8] text-[1.1rem] leading-relaxed max-w-2xl" data-i18n="about_bio">
+                    Sou desenvolvedor web com foco em Python e tecnologias front-end. Gosto de transformar ideias em
+                    aplicações funcionais e bem estruturadas. Atualmente estudo Engenharia de Software e estou sempre em
+                    busca de evoluir minhas habilidades e construir projetos cada vez melhores.
+                </p>
+
+                <div class="flex flex-row gap-4 mt-8">
+                    <span
+                        class="border rounded-[0.6rem] p-3 border-[#135bec1a] hover:bg-[#1a56ff]/10 opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span
+                        class="border rounded-[0.6rem] p-3 border-[#135bec1a] hover:bg-[#1a56ff]/10 opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z"
+                                clip-rule="evenodd" />
+                            <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
+                        </svg>
+                    </span>
+                    <span
+                        class="border rounded-[0.6rem] p-3 border-[#135bec1a] hover:bg-[#1a56ff]/10 opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none"
+                            viewBox="0 0 24 24">
+                            <path fill="#1a56ff" fill-rule="evenodd"
+                                d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span
+                        class="border rounded-[0.6rem] p-3 border-[#135bec1a] hover:bg-[#1a56ff]/10 opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#1a56ff">
+                            <path
+                                d="M560-520h280v-200H560v200Zm140-50-100-70v-40l100 70 100-70v40l-100 70ZM80-120q-33 0-56.5-23.5T0-200v-560q0-33 23.5-56.5T80-840h800q33 0 56.5 23.5T960-760v560q0 33-23.5 56.5T880-120H80Zm556-80h244v-560H80v560h4q42-75 116-117.5T360-360q86 0 160 42.5T636-200ZM445-435q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM182-200h356q-34-38-80.5-59T360-280q-51 0-97 21t-81 59Zm149.5-291.5Q320-503 320-520t11.5-28.5Q343-560 360-560t28.5 11.5Q400-537 400-520t-11.5 28.5Q377-480 360-480t-28.5-11.5ZM480-480Z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            <div
+                class="work-txt bg-[#135bec0d] border-[#135bec1a] border-2 rounded-[0.6rem] p-6 flex flex-col transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <span class="flex gap-[12px] items-center text-white font-medium">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24px"
+                        height="24px" fill="none" viewBox="0 0 24 24">
+                        <path stroke="#1a56ff" stroke-linecap="round" stroke-width="2"
+                            d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                    </svg>
+                    <h3 data-i18n="about_h3">Trabalho em Equipe</h3>
+                </span>
+                <span class="text-[#94a3b8] mt-4" data-i18n="about_p">Gosto de colaborar, trocar conhecimentos e
+                    construir soluções junto
+                    com outras pessoas.</span>
+            </div>
+            <div
+                class="learn-txt bg-[#135bec0d] border-[#135bec1a] border-2 rounded-[0.6rem] p-6 flex flex-col transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <span class="flex gap-[12px] items-center text-white font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1a56ff">
+                        <path
+                            d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l52 205q5 19-7 34.5T840-360h-80v120q0 33-23.5 56.5T680-160h-80v80h-80v-160h160v-200h108l-38-155q-23-91-98-148t-172-57q-116 0-198 81t-82 197q0 60 24.5 114t69.5 96l26 24v208h-80Zm254-360Zm-14 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm-30-128h61q0-25 6.5-40.5T544-526q18-20 35-40.5t17-53.5q0-42-32.5-71T483-720q-40 0-72.5 23T365-637l55 23q7-22 24.5-35.5T483-663q22 0 36.5 12t14.5 31q0 21-12.5 37.5T492-549q-20 21-31 42t-11 59Z">
+                        </path>
+                    </svg>
+                    <h3 data-i18n="about_h3h">Aprendizado Contínuo</h3>
+                </span>
+                <span class="text-[#94a3b8] mt-4" data-i18n="about_pp">Estou sempre estudando, criando projetos e
+                    buscando evoluir como
+                    desenvolvedor a cada nova experiência.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- trajectory -->
+    <section id="timeline" class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+        <div class="mb-16">
+            <span class="text-blue-600 font-bold text-[2rem] md:text-[2.5rem]">01.</span>
+            <span class="text-white font-bold text-[2rem] md:text-[2.5rem] ml-2" data-i18n="career">Trajetória</span>
+        </div>
+
+        <div class="relative border-l border-blue-900/40 ml-4 md:ml-6 pl-10 space-y-20">
+            <div class="timeline-item relative">
+                <div
+                    class="dot absolute -left-[51px] w-5 h-5 rounded-full bg-[#1a56ff] shadow-[0_0_15px_#2563eb] border-4 border-[#05070a] transition-all duration-500">
+                </div>
+                <span class="text-[#1a56ff] font-bold text-sm tracking-widest uppercase" data-i18n="date">2024 -
+                    Presente</span>
+                <h3 class="text-[1.2rem] md:text-3xl font-bold text-[#f1f5f9] mt-3 mb-4 leading-tight"
+                    data-i18n="enterprise">
+                    Engenharia de Software — Universidade Estácio
+                </h3>
+                <p class="text-[#94a3b8] text-lg max-w-2xl leading-relaxed" data-i18n="enterprise_p">
+                    Iniciei minha graduação em Engenharia de Software enquanto continuo desenvolvendo projetos e
+                    aprofundando meus conhecimentos em desenvolvimento web e Python.
+                </p>
+            </div>
+
+            <div class="timeline-item relative">
+                <div
+                    class="dot absolute -left-[51px]  w-5 h-5 rounded-full bg-blue-900/50 border-4 border-[#05070a] transition-all duration-500">
+                </div>
+
+                <span class="text-[#1a56ff] font-bold text-sm tracking-widest uppercase">2023 - 2024</span>
+                <h3 class="text-[1.2rem] md:text-3xl font-bold text-[#f1f5f9] mt-3 mb-4 leading-tight"
+                    data-i18n="return">
+                    Retorno à programação.
+                </h3>
+                <p class="text-[#94a3b8] text-lg max-w-2xl leading-relaxed" data-i18n="enterprise_pp">
+                    Logo após o fechamento do meu servidor, eu parei de estudar. Voltei a focar em programação,
+                    estudando novamente os fundamentos de desenvolvimento web e começando a construir projetos próprios.
+                </p>
+            </div>
+
+            <div class="timeline-item relative">
+                <div
+                    class="dot absolute -left-[51px]  w-5 h-5 rounded-full bg-blue-900/50 border-4 border-[#05070a] transition-all duration-500">
+                </div>
+
+                <span class="text-[#1a56ff] font-bold text-sm tracking-widest uppercase">2019 - 2023</span>
+                <h3 class="text-[1.2rem] md:text-3xl font-bold text-[#f1f5f9] mt-3 mb-4 leading-tight"
+                    data-i18n="finish">
+                    Encerramento do servidor.
+                </h3>
+                <p class="text-[#94a3b8] text-lg max-w-2xl leading-relaxed" data-i18n="enterprise_pppp">
+                    Após alguns anos administrando o servidor de MuOnline, finalizei o projeto. A experiência me trouxe
+                    aprendizados importantes sobre servidores, comunidades online, resolução de problemas técnicos e
+                    muito conhecimento sobre tecnologia. Depois do fechamento, eu parei os estudados em programação,
+                    pois estava desanimado.
+                </p>
+            </div>
+
+            <div class="timeline-item relative">
+                <div
+                    class="dot absolute -left-[51px]  w-5 h-5 rounded-full bg-blue-900/50 border-4 border-[#05070a] transition-all duration-500">
+                </div>
+
+                <span class="text-[#1a56ff] font-bold text-sm tracking-widest uppercase">2014 - 2019</span>
+                <h3 class="text-[1.2rem] md:text-3xl font-bold text-[#f1f5f9] mt-3 mb-4 leading-tight"
+                    data-i18n="first">
+                    Primeiro contato com tecnologia.
+                </h3>
+                <p class="text-[#94a3b8] text-lg max-w-2xl leading-relaxed" data-i18n="enterprise_ppp">
+                    Administrei um servidor de MuOnline (MMORPG), onde tive meu primeiro contato com programação,
+                    servidores e lógica de sistemas, experiência que despertou minha paixão pela tecnologia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+        <div class="mb-8">
+            <span class="text-blue-600 font-bold text-[2rem] md:text-[2.5rem]">02.</span>
+            <span class="text-white font-bold text-[2rem] md:text-[2.5rem] ml-2 font-sans">
+                <a href="#" class="hover:text-[#94a3b8]" data-i18n="project">Projetos <span
+                        class="text-[23px] text-blue-600">+</span></a>
+            </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+                class="md:row-span-2 bg-[#0A0E1A] border-[#135bec1a] border rounded-[0.6rem] transition-all duration-300 shadow-lg hover:scale-[1.01] group cursor-pointer flex flex-col relative h-[409px]">
+                <div
+                    class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-blue-600 w-[32px] h-[32px] rounded-md flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="#e3e3e3">
+                        <path
+                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <img src="static/images/projects/barbershop.png" alt="Barbershop"
+                    class="rounded-t-[0.6rem] object-cover w-full opacity-[0.5] group-hover:opacity-100 transition-opacity duration-300">
+
+                <div class="p-6 flex-1">
+                    <span class="text-[#f1f5f9] font-semibold text-xl">Barbershop</span>
+                    <p class="text-[#94a3b8] mt-2 text-sm leading-relaxed" data-i18n="project_b">
+                        Sistema completo para gerenciamento de Barbearia
+                    </p>
+                </div>
+
+                <div class="flex flex-row gap-2 px-6 pb-8 flex-wrap text-[12px]">
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">HTML5</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">CSS3</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">JavaScript</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">Python</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">Django</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">SQLite</span>
+                </div>
+            </div>
+
+            <div
+                class="bg-[#0A0E1A] border-[#135bec1a] border rounded-[0.6rem] transition-all duration-300 shadow-lg hover:scale-[1.01] group cursor-pointer flex flex-col relative">
+                <div
+                    class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-blue-600 w-[32px] h-[32px] rounded-md flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="#e3e3e3">
+                        <path
+                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <img src="static/images/projects/ticket-system.jpg" alt="Ticket System"
+                    class="rounded-t-[0.6rem] object-cover w-full h-[195px] opacity-[0.5] group-hover:opacity-100 transition-opacity duration-300">
+
+                <div class="p-5">
+                    <span class="text-[#f1f5f9] font-semibold text-lg">Ticket System</span>
+                    <p class="text-[#94a3b8] mt-2 text-sm" data-i18n="project_t">Sistema completo para suporte.</p>
+                </div>
+                <div class="flex flex-row gap-2 px-6 pb-8 flex-wrap text-[12px]">
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">HTML5</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">CSS3</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">JavaScript</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">Python</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">Django</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">SQLite</span>
+                </div>
+            </div>
+
+            <div
+                class="bg-[#0A0E1A] border-[#135bec1a] border rounded-[0.6rem] transition-all duration-300 shadow-lg hover:scale-[1.01] group cursor-pointer flex flex-col relative">
+                <div
+                    class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-blue-600 w-[32px] h-[32px] rounded-md flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="#e3e3e3">
+                        <path
+                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <img src="static/images/projects/petshop.png" alt="Petshop"
+                    class="rounded-t-[0.6rem] object-cover w-full opacity-[0.5] group-hover:opacity-100 transition-opacity duration-300">
+
+                <div class="p-5">
+                    <span class="text-[#f1f5f9] font-semibold text-lg">Petshop</span>
+                    <p class="text-[#94a3b8] mt-2 text-sm" data-i18n="project_s">Landing page para petshop</p>
+                </div>
+                <div class="flex flex-row gap-2 px-6 pb-8 flex-wrap text-[12px]">
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">HTML5</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">CSS3</span>
+                    <span
+                        class="text-[#1a56ff] bg-[#1a56ff1a] border border-[#135bec1a] rounded-[0.4rem] p-[8px]">JavaScript</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- skills -->
+    <section id="knowledge" class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+        <div class="mb-8">
+            <span class="text-blue-600 font-bold text-[2rem] md:text-[2.5rem]">03.</span>
+            <span class="text-white font-bold text-[2rem] md:text-[2.5rem] ml-2" data-i18n="base">Conhecimentos</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg class="w-6 h-6 m-auto text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff" viewBox="0 0 24 24">
+                    <path
+                        d="m3 2 1.578 17.824L12 22l7.467-2.175L21 2H3Zm14.049 6.048H9.075l.172 2.016h7.697l-.626 6.565-4.246 1.381-4.281-1.455-.288-2.932h2.024l.16 1.411 2.4.815 2.346-.763.297-3.005H7.416l-.562-6.05h10.412l-.217 2.017Z" />
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">HTML5</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg class="w-6 h-6 m-auto text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff" viewBox="0 0 24 24">
+                    <path
+                        d="m3 2 1.578 17.834L12 22l7.468-2.165L21 2H3Zm13.3 14.722-4.293 1.204H12l-4.297-1.204-.297-3.167h2.108l.15 1.526 2.335.639 2.34-.64.245-3.05h-7.27l-.187-2.006h7.64l.174-2.006H6.924l-.176-2.006h10.506l-.954 10.71Z" />
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">CSS3</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#1a56ff" class="m-auto">
+                    <path
+                        d="M300-360q-25 0-42.5-17.5T240-420v-40h60v40h60v-180h60v180q0 25-17.5 42.5T360-360h-60Zm220 0q-17 0-28.5-11.5T480-400v-40h60v20h80v-40H520q-17 0-28.5-11.5T480-500v-60q0-17 11.5-28.5T520-600h120q17 0 28.5 11.5T680-560v40h-60v-20h-80v40h100q17 0 28.5 11.5T680-460v60q0 17-11.5 28.5T640-360H520Z" />
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">JavaScript</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg class="w-6 h-6 m-auto text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff" viewBox="0 0 24 24">
+                    <path
+                        d="M11.782 5.72a4.773 4.773 0 0 0-4.8 4.173 3.43 3.43 0 0 1 2.741-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.934-2.865 3.137-3.921-.969 1.379-2.44 2.207-4.259 1.231-1.253-.673-2.19-3.438-5.959-3.318ZM6.8 11.979A4.772 4.772 0 0 0 2 16.151a3.431 3.431 0 0 1 2.745-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.933-2.865 3.137-3.921-.97 1.379-2.44 2.208-4.259 1.231-1.253-.673-2.19-3.443-5.963-3.317Z" />
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">tailwindcss</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg class="w-6 h-6 m-auto text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#1a56ff" viewBox="0 0 24 24">
+                    <path
+                        d="M12.744,18.458 C12.262,18.458 11.872,18.066 11.872,17.581 C11.872,17.097 12.262,16.706 12.744,16.706 C13.226,16.706 13.616,17.097 13.616,17.581 C13.616,18.066 13.226,18.458 12.744,18.458 M10.072,20 C15.15,20 14.833,17.786 14.833,17.786 L14.827,15.494 L9.982,15.494 L9.982,14.805 L16.751,14.805 C16.751,14.805 20,15.176 20,10.026 C20,4.876 17.165,5.058 17.165,5.058 L15.472,5.058 L15.472,7.449 C15.472,7.449 15.563,10.299 12.682,10.299 L7.876,10.299 C7.876,10.299 5.176,10.255 5.176,12.922 L5.176,17.331 C5.176,17.331 4.766,20 10.072,20 M7.257,1.542 C7.739,1.542 8.128,1.934 8.128,2.419 C8.128,2.903 7.739,3.294 7.257,3.294 C6.775,3.294 6.385,2.903 6.385,2.419 C6.385,1.934 6.775,1.542 7.257,1.542 M9.928,0 C4.851,0 5.168,2.214 5.168,2.214 L5.174,4.506 L10.019,4.506 L10.019,5.195 L3.249,5.195 C3.249,5.195 0,4.824 0,9.974 C0,15.124 2.836,14.942 2.836,14.942 L4.528,14.942 L4.528,12.551 C4.528,12.551 4.437,9.701 7.319,9.701 L12.124,9.701 C12.124,9.701 14.824,9.745 14.824,7.078 L14.824,2.669 C14.824,2.669 15.234,0 9.928,0">
+                    </path>
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">Python</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg fill="#1a56ff" version="1.1" xmlns="http://www.w3.org/2000/svg" height="24px" width="24px"
+                    class="m-auto" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                    enable-background="new 0 0 512 512" xml:space="preserve">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g id="5151e0c8492e5103c096af88a51f62ed">
+                            <path display="inline"
+                                d="M321.38,0.5h-83.553v127.405c-12.483-3.253-22.786-4.338-36.354-4.338 c-87.349,0-143.781,55.34-143.781,140.52c0,88.441,53.176,134.556,155.181,134.556c34.165,0,65.639-3.254,108.508-11.392V0.5z M237.827,329.203c-11.938,1.623-19.533,2.162-28.755,2.162c-42.865,0-66.197-24.409-66.197-68.904 c0-45.573,24.413-71.616,66.743-71.616c10.303,0,18.437,1.084,28.209,4.338V329.203z M454.309,0.949v85.726h-83.557V0.949H454.309z M370.752,129.532h83.557v193.699c0,66.735-4.889,98.743-19.537,126.417c-13.56,26.59-31.466,43.403-68.365,61.852l-77.589-36.896 c36.889-17.359,54.81-32.542,66.197-55.883c11.934-23.874,15.737-51.544,15.737-124.252V129.532z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">Django</span>
+            </a>
+
+            <a href="#"
+                class="border border-[#135bec1a] hover:bg-[#1a56ff]/10 rounded p-[1rem] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    class="m-auto" fill="#1a56ff">
+                    <path
+                        d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+                </svg>
+                <span class="flex justify-center text-[0.8rem] pt-[1rem] text-[#94a3b8]">Database</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- contato -->
+    <section id="contact" class="max-w-7xl mx-auto px-6 py-12 relative z-10">
+        <div class="mb-8">
+            <span class="text-blue-600 font-bold text-[2rem] md:text-[2.5rem]">04.</span>
+            <span class="text-white font-bold text-[2rem] md:text-[2.5rem] ml-2" data-i18n="contact">Contato</span>
+        </div>
+
+        <button
+            class="flex-1 md:flex-none  bg-[#1a56ff] rounded-md text-white md:w-[300px] w-full px-20 py-4 font-bold opacity-80 -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">
+            <a href="mailto:dev.ricardobarbosa@gmail.com" data-i18n="send">
+                Enviar mensagem
+            </a>
+        </button>
+    </section>
+
+    <section id="footer"
+        class="max-w-7xl mx-auto px-6 py-12 relative z-10 border-t border-[#135bec1c] flex justify-center">
+        <span class="text-[#94a3b8] pb-14">&copy 2026 <span data-i18n="copy">by</span> <a href="#"
+                class="hover:text-[#f1f5f9] -translate-y-0.5 cursor-pointer transition-all duration-300 hover:opacity-100 hover:-translate-y-2">ricardobarbosadev.com</a></span>
+
+    </section>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/i18n.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script src="static/js/scrollrevealjs.js"></script>
+    <script src="static/js/languages/translations.json"></script>
+</body>
+
+</html>
