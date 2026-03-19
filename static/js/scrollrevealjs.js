@@ -1,60 +1,35 @@
-// scroll
 const sr = ScrollReveal({
-    distance: '60px',
+    distance: '50px',
     duration: 900,
     easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
-    reset: false
+    reset: false,
+    mobile: true
 });
 
-sr.reveal('#home', {
-    origin: 'top',
-    delay: 100
-});
+// animacoes de cima
+sr.reveal('#home', { origin: 'top' });
 
-sr.reveal('#about', {
+// animacoes que vem da esquerda
+sr.reveal('#about, .work-txt, #timeline, #projects, #knowledge, #contact, #footer', {
     origin: 'left',
-    delay: 100
+    interval: 100
 });
+
+// animacoes que vem de baixo
 sr.reveal('.about-txt', {
     origin: 'bottom',
     delay: 200
 });
-sr.reveal('.work-txt', {
-    origin: 'left',
-    delay: 200
-});
 
+// animacoes que vem da direita
 sr.reveal('.learn-txt', {
-    origin: 'right',
-    delay: 200
+    origin: 'right'
 });
 
-sr.reveal('#timeline', {
-    origin: 'left',
-    delay: 250
+// animacoes do botão do whatsapp
+sr.reveal('#whatsapp', {
+    origin: 'bottom',
+    distance: '20px',
+    delay: 700,
+    scale: 0.8
 });
-
-sr.reveal('#projects', {
-    origin: 'left',
-    delay: 300
-});
-
-sr.reveal('#knowledge', {
-    origin: 'left',
-    delay: 400
-});
-
-sr.reveal('#contact', {
-    origin: 'left',
-    delay: 500
-});
-
-sr.reveal('#footer', {
-    origin: 'left',
-    delay: 600
-});
-
-// sr.reveal("#whatsapp", {
-//     origin: 'left',
-//     delay: 700
-// })
